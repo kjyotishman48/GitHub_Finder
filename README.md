@@ -1,3 +1,26 @@
+# GitHub Finder Application
+
+It is a web-app which can search for github users and fetch the GitHub account details and public - repository details of users.
+
+I have used Tailwind CSS, daisy-UI and GitHub API. Used context-api, React-Redux for statemanagement. 
+
+Check out the live website - https://git-hub-finder-taupe.vercel.app/
+
+(Deployed using Vercel)
+
+![image](https://github.com/kjyotishman48/GitHub_Finder/assets/68853069/8d50f7db-9c41-4fea-b235-7c4373f17053)
+
+Thats the search page
+
+![image](https://github.com/kjyotishman48/GitHub_Finder/assets/68853069/a6484ff7-01e6-445a-a57b-3555be143b20)
+
+That's what the user page looks like 
+
+![image](https://github.com/kjyotishman48/GitHub_Finder/assets/68853069/4d746652-45db-4a8e-abe9-ecf0c2ab72c5)
+
+![image](https://github.com/kjyotishman48/GitHub_Finder/assets/68853069/07a36158-4534-4b39-a874-95fff4f7d340)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
