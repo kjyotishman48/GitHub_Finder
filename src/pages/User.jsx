@@ -5,16 +5,17 @@ import Spinner from '../components/layout/Spinner'
 import RepoList from '../components/repos/RepoList'
 import GithubContext from "../context/github/GithubContext"
 import { useParams } from "react-router-dom"
-
+ 
 function User() {
-  const {getUser, user, loading} = useContext(GithubContext)
-
+  const {getUser, getUserRepos, user, repos, loading} = useContext(GithubContext)
+ 
   const params = useParams()
-
+ 
   useEffect(() => {
     getUser(params.login)
+    getUserRepos(params.login)
   }, [])
-
+ 
   const {
     name,
     type,
@@ -31,11 +32,11 @@ function User() {
     public_gists,
     hireable,
   } = user
-
+ 
   if(loading) {
     return <Spinner/>
   }
-
+ 
   return (
     <>
     <div className="w-full mx-auto lg:w-10/12">
@@ -44,7 +45,7 @@ function User() {
           Back To Search
         </Link>
       </div>
-
+ 
       <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
           <div className='custom-card-image mb-6 md:mb-0'>
             <div className='rounded-lg shadow-xl card image-full'>
@@ -57,8 +58,8 @@ function User() {
               </div>
             </div>
           </div>
-
-
+ 
+ 
           <div className='col-span-2'>
             <div className='mb-6'>
               <h1 className='text-3xl card-title'>
@@ -91,7 +92,7 @@ function User() {
                   </div>
                 </div>
               )}
-
+ 
               {blog && (
                 <div className="stat">
                   <div className="stat-title text-md">
@@ -104,7 +105,7 @@ function User() {
                   </div>
                 </div>
               )}
-
+ 
               {twitter_username && (
                 <div className="stat">
                   <div className="stat-title text-md">
@@ -117,13 +118,13 @@ function User() {
                   </div>
                 </div>
               )}
-
-
+ 
+ 
             </div>
           </div>
-
+ 
         </div>
-
+ 
         <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
           <div className='grid grid-cols-1 md:grid-cols-4'>
             <div className='stat'>
@@ -135,7 +136,7 @@ function User() {
                 {followers}
               </div>
             </div>
-
+ 
             <div className='stat'>
               <div className='stat-figure text-secondary'>
                 <FaUserFriends className='text-3xl md:text-5xl' />
@@ -145,7 +146,7 @@ function User() {
                 {following}
               </div>
             </div>
-
+ 
             <div className='stat'>
               <div className='stat-figure text-secondary'>
                 <FaCodepen className='text-3xl md:text-5xl' />
@@ -155,7 +156,7 @@ function User() {
                 {public_repos}
               </div>
             </div>
-
+ 
             <div className='stat'>
               <div className='stat-figure text-secondary'>
                 <FaStore className='text-3xl md:text-5xl' />
@@ -167,9 +168,10 @@ function User() {
             </div>
           </div>
         </div>
+        <RepoList repos={repos}/>
       </div>
     </>
   )
 }
-
+ 
 export default User
